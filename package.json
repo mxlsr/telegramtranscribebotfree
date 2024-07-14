@@ -1,13 +1,13 @@
 {
   "name": "telegramtranscribebot",
   "version": "1.0.0",
-  "description": "describe voice messages in telegram with the whisper ai api",
+  "description": "describe voice messages in telegram with the fal.ai whizper api",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Maximilian Löser",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "@fal-ai/serverless-client": "^0.11.0",
     "dotenv": "^16.4.5",
