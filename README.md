@@ -12,7 +12,7 @@ This Telegram bot converts voice messages and audio files into text using fal.ai
 
 ## Prerequisites
 
-1. fal.ai API key (Get $20 free API credits [here](https://www.fal.ai/))
+1. fal.ai API key (They grant 10$ free API credits [here](https://www.fal.ai/))
 2. Telegram Bot API key (Instructions below)
 3. Node.js and npm installed on your system
 4. your telegram user ID to whitelist it for the bot (if ALLOWED_USER_IDS it not set, the bot will be usable by everyone who finds it!) 
