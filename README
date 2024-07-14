@@ -40,6 +40,8 @@ This Telegram bot converts voice messages and audio files into text using fal.ai
    FAL_API_KEY=your_fal_ai_api_key
    TELEGRAM_BOT_API_KEY=your_telegram_bot_api_key
    ALLOWED_USER_IDS=123456789,987654321  # Optional: Comma-separated list of allowed user IDs. The bot will be usable by everyone who finds it if it stays empty!
+   AUDIO_LANG=en # language detection is currently not supported by wizper, so choose a language here: https://fal.ai/models/fal-ai/whisper/api
+   
    ```
 
 ## Getting a Telegram Bot API Key
