@@ -95,7 +95,10 @@ async function handleAudio(ctx) {
     const link = await ctx.telegram.getFileLink(file_id);
     const file_path = await downloadFile(link);
     const transcription = await transcribeAudioWithFAL(file_path);
-    ctx.reply(transcription);
+    const messageParts = splitMessage(transcription);
+    for (const part of messageParts) {
+      await ctx.reply(part);
+    }
   } catch (error) {
     console.error("Error processing audio:", error);
     if (error.status === 422) {
@@ -160,6 +163,28 @@ async function transcribeAudioWithFAL(filePath) {
       fs.unlinkSync(filePath);
     }
   }
+}
+
+// splitMessage for transcriptions that exceed the telegram character limit for messages
+function splitMessage(message, maxLength = 4096) {
+  const parts = [];
+  while (message.length > 0) {
+    if (message.length <= maxLength) {
+      parts.push(message);
+      break;
+    }
+    
+    let part = message.substr(0, maxLength);
+    let lastSpaceIndex = part.lastIndexOf(' ');
+    
+    if (lastSpaceIndex === -1) {
+      lastSpaceIndex = maxLength;
+    }
+    
+    parts.push(part.substr(0, lastSpaceIndex));
+    message = message.substr(lastSpaceIndex + 1);
+  }
+  return parts;
 }
 
 bot.launch();
